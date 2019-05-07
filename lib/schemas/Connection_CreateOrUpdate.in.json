@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the create or update connection operation.",
+            "properties": {
+                "name": {
+                    "description": "Gets or sets the name of the connection.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the properties of the connection.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "connectionType": {
+                            "description": "Gets or sets the connectionType of the connection.",
+                            "properties": {
+                                "name": {
+                                    "description": "Gets or sets the name of the connection type.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "description": {
+                            "description": "Gets or sets the description of the connection.",
+                            "type": "string"
+                        },
+                        "fieldDefinitionValues": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Gets or sets the field definition properties of the connection.",
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "connectionType"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

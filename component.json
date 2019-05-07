@@ -1,0 +1,134 @@
+{
+    "title": "AutomationManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-connection/2015-10-31/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Connection_ListByAutomationAccount": {
+            "main": "./lib/actions/Connection_ListByAutomationAccount.js",
+            "title": "Retrieve a list of connections.",
+            "description": "Retrieve a list of connections.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connection_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connection_Delete": {
+            "main": "./lib/actions/Connection_Delete.js",
+            "title": "Delete the connection.",
+            "description": "Delete the connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connection_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connection_Get": {
+            "main": "./lib/actions/Connection_Get.js",
+            "title": "Retrieve the connection identified by connection name.",
+            "description": "Retrieve the connection identified by connection name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connection_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connection_Update": {
+            "main": "./lib/actions/Connection_Update.js",
+            "title": "Update a connection.",
+            "description": "Update a connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connection_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Connection_CreateOrUpdate": {
+            "main": "./lib/actions/Connection_CreateOrUpdate.js",
+            "title": "Create or update a connection.",
+            "description": "Create or update a connection.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Connection_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
